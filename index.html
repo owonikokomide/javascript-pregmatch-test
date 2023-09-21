@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>javascript pregmatch</title>
+</head>
+<body>
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" onkeyup="detect()">
+  <input type="checkbox"  onclick="checkbox()">
+  <p id="caps">One upper case</p>
+  <p id="lower">lower case</p>
+  <p id="special">Special Characters</p>
+  <p id="num">One numeric</p>
+  <p id="len">8 characters</p>
+<script>
+function checkbox(){
+      
+      var check = document.getElementById("password");
+      if(check.type === "password"){
+        check.type = "text";
+      }
+      else{
+        check.type = "password";
+      }
+    }
+
+ function detect(){
+const str = document.getElementById('password').value;
+const patterncaps = /[A-Z]/g;
+const patternlower = /[a-z]/g;
+const patternnums = /[0-9]/g;
+const special = /[^a-zA-Z0-9\s]/g;
+const length = str.length;
+// const matches = str.match(pattern);
+// console.log(matches);
+if(str.match(patterncaps)){
+  document.getElementById('caps').style.color='blue';
+  document.getElementById('caps').style.display="block";
+}else{                                  
+  document.getElementById('caps').style.color='red';
+  document.getElementById('caps').style.display='none';
+}
+if(str.match(patternlower)){
+  document.getElementById('lower').style.color='blue';
+  document.getElementById('lower').style.display='block';
+}else{
+  document.getElementById('lower').style.color='red';
+  document.getElementById('lower').style.display='none';
+}
+if(str.match(patternnums)){
+  document.getElementById('num').style.color='blue';
+  document.getElementById('num').style.display='block';
+}else{
+  document.getElementById('num').style.color='red';
+  document.getElementById('num').style.display='none';
+}
+if(str.match(special)){
+  document.getElementById('special').style.color='blue';
+  document.getElementById('special').style.display='block';
+}else{
+  document.getElementById('special').style.color='red';
+  document.getElementById('special').style.display='none';
+}
+if(length >= 8){
+  document.getElementById('len').style.color="blue";
+  document.getElementById('len').style.display='block';
+}else{
+  document.getElementById('len').style.color="red";
+  document.getElementById('len').style.display='none';
+}
+ }
+</script>
+</body>
+</html>
